@@ -1,6 +1,8 @@
 <html>
+<head>
 <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-
+<script src="js/myController.js"></script>
+</head>
 <body>
 
 <div ng-app="myApp" ng-controller="myController">
@@ -12,8 +14,6 @@ Charges: {{getCharges()|currency:'&euro;'}}<br>
     </li>
 </ul>
 
-Status : ${status/get}
 </div>
-<script src="/js/myController.js"></script>
 </body>
 </html>
