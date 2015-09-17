@@ -17,6 +17,8 @@
 
     <mvc:annotation-driven />
 
+    <bean id="employeeService" class="ash.app.status.service.EmployeeService"/>
+
 </beans>
 
 
