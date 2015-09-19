@@ -1,8 +1,8 @@
-angular.module('myApp', [])
-        .controller('myController', function($scope, $http){
-        $http.get("http://localhost:8080/dailystatus/rest/employee/fetch")
+var app = angular.module('myApp', []);
+    app.controller('myController', function($scope, $http){
+        $http.get("http://localhost:8080/dailystatus/rest/employee/fetch/all")
             .success(function(response){
-                $scope.myVar = response[1].name;
+                $scope.employees = response;
             });
         $scope.getCharges = function(){
             return 350;

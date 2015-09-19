@@ -7,6 +7,7 @@ public class Employee {
 
     private int employeeId;
     private String name;
+    private String email;
     private String designation;
     private String city;
     private String blogUrl;
@@ -51,11 +52,20 @@ public class Employee {
         this.blogUrl = blogUrl;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "employeeId=" + employeeId +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", designation='" + designation + '\'' +
                 ", city='" + city + '\'' +
                 ", blogUrl='" + blogUrl + '\'' +
@@ -70,11 +80,11 @@ public class Employee {
         Employee employee = (Employee) o;
 
         if (employeeId != employee.employeeId) return false;
-        if (blogUrl != null ? !blogUrl.equals(employee.blogUrl) : employee.blogUrl != null) return false;
-        if (city != null ? !city.equals(employee.city) : employee.city != null) return false;
-        if (designation != null ? !designation.equals(employee.designation) : employee.designation != null)
-            return false;
-        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
+        if (!blogUrl.equals(employee.blogUrl)) return false;
+        if (!city.equals(employee.city)) return false;
+        if (!designation.equals(employee.designation)) return false;
+        if (!email.equals(employee.email)) return false;
+        if (!name.equals(employee.name)) return false;
 
         return true;
     }
@@ -82,10 +92,11 @@ public class Employee {
     @Override
     public int hashCode() {
         int result = employeeId;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (designation != null ? designation.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (blogUrl != null ? blogUrl.hashCode() : 0);
+        result = 31 * result + name.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + designation.hashCode();
+        result = 31 * result + city.hashCode();
+        result = 31 * result + blogUrl.hashCode();
         return result;
     }
 }

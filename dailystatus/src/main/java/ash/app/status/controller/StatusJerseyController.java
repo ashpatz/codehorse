@@ -1,6 +1,8 @@
 package ash.app.status.controller;
 
 import ash.app.status.model.Employee;
+import ash.app.status.service.IEmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
@@ -19,38 +21,26 @@ import java.util.List;
 @Path("/employee")
 public class StatusJerseyController {
 
+    @Autowired
+    private IEmployeeService employeeService;
+
     @GET
-    @Path("/fetch")
+    @Path("/fetch/all")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getEmployees(){
-        List<Employee> employeeList = new ArrayList<>();
-        Employee employee = new Employee();
-        employee.setEmployeeId(1);
-        employee.setName("Ashish Patil");
-        employee.setDesignation("Architect");
-        employee.setCity("Switzerland");
-        employeeList.add(employee);
-
-        employee = new Employee();
-        employee.setEmployeeId(2);
-        employee.setName("Ramadhir Singh");
-        employee.setDesignation("Mukhiya");
-        employee.setCity("Wasseypur");
-        employeeList.add(employee);
-
-       // GenericEntity<List<Employee>> jsonEmployeeList = new GenericEntity<List<Employee>>(employeeList){};
-        return Response.ok(employeeList).build();
+    public Response getAllEmployees() {
+        return Response.ok(employeeService.getEmployees()).build();
     }
 
     @GET
     @Path("/fetchone")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getEmployee(){
+    public Response getEmployee() {
         Employee employee = new Employee();
         employee.setEmployeeId(1);
         employee.setName("Ashish Patil");
         employee.setDesignation("Architect");
         employee.setCity("Switzerland");
+        employee.setEmail("ashish@codehorsecorp.com");
 
         return Response.ok(employee).build();
     }

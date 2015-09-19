@@ -13,10 +13,18 @@ import java.util.List;
 /**
  * Created by Sentinel on 9/17/2015.
  */
-public class EmployeeService implements IEmployeeService{
+public class EmployeeService implements IEmployeeService {
 
-    @Override
+    private List<Employee> employeeStore = new ArrayList<>();
+
     public List<Employee> getEmployees() {
+        if (employeeStore.isEmpty()) {
+            employeeStore.addAll(populateEmployees());
+        }
+        return employeeStore;
+    }
+
+    private List<Employee> populateEmployees() {
         String csvFile = "employees.csv";
         BufferedReader br = null;
         String line;
@@ -31,9 +39,10 @@ public class EmployeeService implements IEmployeeService{
                 String[] employeeLine = line.split(cvsSplitBy);
                 employee.setEmployeeId(Integer.valueOf(employeeLine[0]));
                 employee.setName(employeeLine[1]);
-                employee.setDesignation(employeeLine[2]);
-                employee.setCity(employeeLine[3]);
-                employee.setBlogUrl(employeeLine[4]);
+                employee.setEmail(employeeLine[2]);
+                employee.setDesignation(employeeLine[3]);
+                employee.setCity(employeeLine[4]);
+                employee.setBlogUrl(employeeLine[5]);
                 employeeList.add(employee);
             }
         } catch (IOException e) {
