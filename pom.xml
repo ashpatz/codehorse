@@ -10,6 +10,7 @@
         <module>dailystatus</module>
         <module>javasamples</module>
         <module>mavenplugins</module>
+        <module>springboot</module>
     </modules>
 
     <url>http://maven.apache.org</url>
