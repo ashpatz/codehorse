@@ -1,6 +1,6 @@
 package ash.patz.learning.patterns.abstractfactory;
 
-
+import ash.patz.learning.patterns.abstractfactory.impl.UIApplication;
 import ash.patz.learning.patterns.abstractfactory.impl.mac.MacGuiFactory;
 import ash.patz.learning.patterns.abstractfactory.impl.windows.WindowsGuiFactory;
 import org.apache.commons.lang.SystemUtils;
@@ -8,15 +8,10 @@ import org.apache.commons.lang.SystemUtils;
 public class TestClient {
 
     public static void main(String[] args) {
-        GUIFactory guiFactory;
         if(SystemUtils.IS_OS_WINDOWS) {
-            guiFactory = new WindowsGuiFactory();
+            new UIApplication(new WindowsGuiFactory()).renderUI();
         } else {
-            guiFactory = new MacGuiFactory();
+            new UIApplication(new MacGuiFactory()).renderUI();
         }
-        Button button = guiFactory.createButton();
-        Checkbox checkbox = guiFactory.createCheckbox();
-        button.render();
-        checkbox.render();
     }
 }
