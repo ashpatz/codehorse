@@ -1,6 +1,6 @@
-package ash.patz.learning.patterns.absfactory.impl.windows;
+package ash.patz.learning.patterns.abstractfactory.impl.windows;
 
-import ash.patz.learning.patterns.absfactory.Button;
+import ash.patz.learning.patterns.abstractfactory.Button;
 
 public class WindowsButton implements Button{
     @Override

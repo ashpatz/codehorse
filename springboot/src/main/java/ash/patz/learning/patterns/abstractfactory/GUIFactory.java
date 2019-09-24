@@ -1,4 +1,4 @@
-package ash.patz.learning.patterns.absfactory;
+package ash.patz.learning.patterns.abstractfactory;
 
 public interface GUIFactory {
 

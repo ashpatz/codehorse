@@ -1,6 +1,6 @@
-package ash.patz.learning.patterns.absfactory.impl.windows;
+package ash.patz.learning.patterns.abstractfactory.impl.windows;
 
-import ash.patz.learning.patterns.absfactory.Checkbox;
+import ash.patz.learning.patterns.abstractfactory.Checkbox;
 
 public class WindowsCheckbox implements Checkbox{
     @Override

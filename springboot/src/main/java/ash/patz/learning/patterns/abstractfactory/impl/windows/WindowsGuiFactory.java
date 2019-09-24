@@ -1,8 +1,8 @@
-package ash.patz.learning.patterns.absfactory.impl.windows;
+package ash.patz.learning.patterns.abstractfactory.impl.windows;
 
-import ash.patz.learning.patterns.absfactory.Button;
-import ash.patz.learning.patterns.absfactory.Checkbox;
-import ash.patz.learning.patterns.absfactory.GUIFactory;
+import ash.patz.learning.patterns.abstractfactory.Button;
+import ash.patz.learning.patterns.abstractfactory.Checkbox;
+import ash.patz.learning.patterns.abstractfactory.GUIFactory;
 
 public class WindowsGuiFactory implements GUIFactory{
     @Override

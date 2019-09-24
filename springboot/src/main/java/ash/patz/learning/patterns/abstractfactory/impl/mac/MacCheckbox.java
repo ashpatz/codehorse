@@ -1,6 +1,6 @@
-package ash.patz.learning.patterns.absfactory.impl.mac;
+package ash.patz.learning.patterns.abstractfactory.impl.mac;
 
-import ash.patz.learning.patterns.absfactory.Checkbox;
+import ash.patz.learning.patterns.abstractfactory.Checkbox;
 
 public class MacCheckbox implements Checkbox{
     @Override
