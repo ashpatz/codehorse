@@ -1,6 +1,5 @@
 package ash.patz.learning.web;
 
-import com.elliemae.annotations.descriptor.GwNamespace;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -15,7 +14,6 @@ import java.net.URISyntaxException;
 /**
  * Created by APatil on 5/23/2017.
  */
-@GwNamespace("encompass")
 @RestController
 @RequestMapping("/v1/users")
 public final class UserController {

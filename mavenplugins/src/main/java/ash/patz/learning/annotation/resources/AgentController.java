@@ -1,6 +1,5 @@
 package ash.patz.learning.annotation.resources;
 
-import com.elliemae.annotations.descriptor.*;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -15,7 +14,6 @@ import java.net.URISyntaxException;
 /**
  * Created by APatil on 5/24/2017.
  */
-@GwNamespace("frontdoor")
 @RestController
 @RequestMapping("/v1/agents")
 public class AgentController {
@@ -27,11 +25,6 @@ public class AgentController {
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
     }
 
-    @GwExposure(path = "/v1/some/new/path/agents")
-    @GwEntitlements()
-    @GwAuthentication
-    @GwClaim(name = "audience", value = "urn:elli:service:edelivery,urn:elli:service:ebs,urn:elli:service:avs")
-    @GwInstanceProximity
     @ApiOperation(value = "Find a agent", notes = "Find a agent with the provided name")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name", value = "agent Name", required = true, dataType = "string", paramType = "path")})
