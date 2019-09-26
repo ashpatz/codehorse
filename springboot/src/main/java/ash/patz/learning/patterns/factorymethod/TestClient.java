@@ -1,7 +1,7 @@
-package ash.patz.learning.patterns.abstractfactory;
+package ash.patz.learning.patterns.factorymethod;
 
-import ash.patz.learning.patterns.abstractfactory.impl.mac.MacGuiFactory;
-import ash.patz.learning.patterns.abstractfactory.impl.windows.WindowsGuiFactory;
+import ash.patz.learning.patterns.factorymethod.impl.mac.MacGuiFactory;
+import ash.patz.learning.patterns.factorymethod.impl.windows.WindowsGuiFactory;
 import org.apache.commons.lang.SystemUtils;
 
 public class TestClient {

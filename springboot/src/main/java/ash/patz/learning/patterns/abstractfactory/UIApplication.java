@@ -1,8 +1,4 @@
-package ash.patz.learning.patterns.abstractfactory.impl;
-
-import ash.patz.learning.patterns.abstractfactory.Button;
-import ash.patz.learning.patterns.abstractfactory.Checkbox;
-import ash.patz.learning.patterns.abstractfactory.GUIFactory;
+package ash.patz.learning.patterns.abstractfactory;
 
 public class UIApplication {
 
