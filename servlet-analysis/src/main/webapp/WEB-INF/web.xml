@@ -1,0 +1,29 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+    <display-name>Servlet Samples Web Application</display-name>
+
+    <filter>
+        <filter-name>ParamFilter</filter-name>
+        <filter-class>ash.servlet.analysis.web.MyFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>ParamFilter</filter-name>
+        <url-pattern>/greeting/*/pqr</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>BaseServlet</servlet-name>
+        <servlet-class>ash.servlet.analysis.web.BaseServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BaseServlet</servlet-name>
+        <url-pattern>/greeting/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>

@@ -11,6 +11,7 @@
         <module>javasamples</module>
         <module>mavenplugins</module>
         <module>springboot</module>
+        <module>servlet-analysis</module>
     </modules>
 
     <url>http://maven.apache.org</url>
