@@ -2,11 +2,14 @@ package ash.patz.learning.patterns.bridge;
 
 import ash.patz.learning.patterns.bridge.concreteclasses.Product;
 
+/**
+ * This can have an abstract method
+ */
 public class Bridge {
 
     private IVisualisation visualisation;
 
-    public Bridge(IVisualisation visualisation) {
+    protected Bridge(IVisualisation visualisation) {
         this.visualisation = visualisation;
     }
 
