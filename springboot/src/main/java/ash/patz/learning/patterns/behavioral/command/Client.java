@@ -11,12 +11,12 @@ public class Client {
         Receiver tv = new ReceiverTv();
         Receiver stereo = new ReceiverStereo();
 
-        CommandTvTurnOn commandTvTurnOn = new CommandTvTurnOn(tv);
-        CommandTvNextChannel commandTvNextChannel = new CommandTvNextChannel(tv);
-        CommandStereoTurnOn commandStereoTurnOn = new CommandStereoTurnOn(stereo);
-        CommandStereoNextChannel commandStereoNextChannel = new CommandStereoNextChannel(stereo);
+        Command commandTvTurnOn = new CommandTvTurnOn(tv);
+        Command commandTvNextChannel = new CommandTvNextChannel(tv);
+        Command commandStereoTurnOn = new CommandStereoTurnOn(stereo);
+        Command commandStereoNextChannel = new CommandStereoNextChannel(stereo);
 
-        InvokerRemoteControl invokerRemoteControl = new InvokerRemoteControl(commandTvTurnOn, commandTvNextChannel);
+        InvokerRemoteControl invokerRemoteControl = new InvokerRemoteControl(() -> tv.turnOn(), () -> tv.nextChannel());
         invokerRemoteControl.pressPowerButton();
         invokerRemoteControl.pressNextChannelButton();
 
