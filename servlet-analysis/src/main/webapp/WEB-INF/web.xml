@@ -13,7 +13,7 @@
 
     <filter-mapping>
         <filter-name>ParamFilter</filter-name>
-        <url-pattern>/greeting/*/pqr</url-pattern>
+        <url-pattern>/as/*</url-pattern>
     </filter-mapping>
 
     <servlet>
@@ -23,7 +23,7 @@
 
     <servlet-mapping>
         <servlet-name>BaseServlet</servlet-name>
-        <url-pattern>/greeting/*</url-pattern>
+        <url-pattern>/as/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

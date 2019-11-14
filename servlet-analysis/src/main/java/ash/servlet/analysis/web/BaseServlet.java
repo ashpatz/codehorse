@@ -18,12 +18,10 @@ public class BaseServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        final Object filterApplied = request.getAttribute("filterApplied");
-        System.out.println("Filter Applied:: "+filterApplied);
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
-        final String requestURI = request.getRequestURI();
-        out.println("<h1>" + requestURI + "</h1>");
+        out.println("<h1> filterApplied: " + request.getAttribute("filterApplied") + "</h1>");
+        out.println("<h1> requestURI: " + request.getAttribute("requestURI") + "</h1>");
+        out.println("<h1> queryString: " + request.getAttribute("queryString") + "</h1>");
     }
 }
