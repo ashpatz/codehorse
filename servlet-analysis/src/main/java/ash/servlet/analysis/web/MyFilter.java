@@ -1,5 +1,8 @@
 package ash.servlet.analysis.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -11,6 +14,9 @@ public class MyFilter implements Filter {
     private static final String RESUME_AUTH_ENDPOINT_REGEX = "^\\/as\\/([\\w-]+)\\/resume\\/as\\/authorization\\.ping$";
     private Pattern AUTH_ENDPOINT;
     private Pattern RESUME_AUTH_ENDPOINT;
+
+    private static final Logger log
+            = LoggerFactory.getLogger(MyFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) {
@@ -25,7 +31,10 @@ public class MyFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
+        log.trace("Entering doFilter");
+
         if (request instanceof HttpServletRequest) {
+            log.info("Received HttpServletRequest");
             String requestURI = ((HttpServletRequest)request).getRequestURI();
             String queryString = ((HttpServletRequest)request).getQueryString();
 
@@ -34,11 +43,14 @@ public class MyFilter implements Filter {
         }
 
         if (!isRequired(request)) {
+            log.debug("Filter not applied");
             chain.doFilter(request, response);
             return;
         }
+        log.debug("Filter applied");
         request.setAttribute("filterApplied", "yes");
         chain.doFilter(request, response);
+        log.trace("Completed doFilter");
     }
 
     private boolean isRequired(final ServletRequest request) {
