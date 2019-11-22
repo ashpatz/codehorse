@@ -1,4 +1,4 @@
-package ash.servlet.analysis.web;
+package ash.servlet.analysis.web.controller.filters;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

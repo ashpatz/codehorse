@@ -2,13 +2,18 @@
         "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<web-app>x
 
     <display-name>Servlet Samples Web Application</display-name>
 
     <filter>
         <filter-name>ParamFilter</filter-name>
-        <filter-class>ash.servlet.analysis.web.MyFilter</filter-class>
+        <filter-class>ash.servlet.analysis.web.controller.filters.MyFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>OauthFilter</filter-name>
+        <filter-class>ash.servlet.analysis.web.controller.filters.OauthFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -16,9 +21,14 @@
         <url-pattern>/as/*</url-pattern>
     </filter-mapping>
 
+    <filter-mapping>
+        <filter-name>OauthFilter</filter-name>
+        <url-pattern>/as/authorization.oauth2</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>BaseServlet</servlet-name>
-        <servlet-class>ash.servlet.analysis.web.BaseServlet</servlet-class>
+        <servlet-class>ash.servlet.analysis.web.controller.BaseServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

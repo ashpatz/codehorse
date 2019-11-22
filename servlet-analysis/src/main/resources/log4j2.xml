@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
-        <Console name="Console" target="SYSTEM_OUT">
+        <Console name="CONSOLE" target="SYSTEM_OUT">
             <!-- Default pattern layout for the default ConeoleAppender -->
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
@@ -23,11 +23,12 @@
             <AppenderRef ref="Console"/>
         </Root>-->
 
-        <Logger name="ash.servlet" level="TRACE"/>
+        <Logger name="ash.servlet" level="DEBUG"/>
 
         <!-- Make all loggers async and use FILE Appender-->
         <AsyncRoot level="INFO" includeLocation="false">
-            <AppenderRef ref="FILE" />
+            <!--<AppenderRef ref="FILE" />-->
+            <AppenderRef ref="CONSOLE" />
         </AsyncRoot>
 
     </Loggers>
