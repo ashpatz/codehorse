@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 
 public class MyFilter implements Filter {
 
-    private static final String AUTH_ENDPOINT_REGEX = "^\\/as\\/authorization\\.oauth2$";
-    private static final String RESUME_AUTH_ENDPOINT_REGEX = "^\\/as\\/([\\w-]+)\\/resume\\/as\\/authorization\\.ping$";
+    private static final String AUTH_ENDPOINT_REGEX = "^/as/authorization\\.oauth2$";
+    private static final String RESUME_AUTH_ENDPOINT_REGEX = "^/as/([\\w-]+)/resume/as/authorization\\.ping$";
     private Pattern AUTH_ENDPOINT;
     private Pattern RESUME_AUTH_ENDPOINT;
 
