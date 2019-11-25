@@ -2,9 +2,15 @@
         "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>x
+<web-app>
 
     <display-name>Servlet Samples Web Application</display-name>
+
+    <!-- ###################  Filters ###################  -->
+    <filter>
+        <filter-name>CookieFilter</filter-name>
+        <filter-class>ash.servlet.analysis.web.controller.filters.CookieFilter</filter-class>
+    </filter>
 
     <filter>
         <filter-name>ParamFilter</filter-name>
@@ -15,6 +21,18 @@
         <filter-name>OauthFilter</filter-name>
         <filter-class>ash.servlet.analysis.web.controller.filters.OauthFilter</filter-class>
     </filter>
+    
+    <filter>
+        <filter-name>AcsRequestFilter</filter-name>
+        <filter-class>ash.servlet.analysis.web.controller.filters.AcsRequestFilter</filter-class>
+    </filter>
+    <!-- ###################  Filters ###################  -->
+
+    <!-- ###################  Filters Mappings ###################  -->
+    <filter-mapping>
+        <filter-name>CookieFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <filter-mapping>
         <filter-name>ParamFilter</filter-name>
@@ -26,14 +44,24 @@
         <url-pattern>/as/authorization.oauth2</url-pattern>
     </filter-mapping>
 
+    <filter-mapping>
+        <filter-name>AcsRequestFilter</filter-name>
+        <url-pattern>/sp/ACS.saml2</url-pattern>
+    </filter-mapping>
+    <!-- ###################  Filters Mappings ###################  -->
+
+    <!-- ###################  Servlets ###################  -->
     <servlet>
         <servlet-name>BaseServlet</servlet-name>
         <servlet-class>ash.servlet.analysis.web.controller.BaseServlet</servlet-class>
     </servlet>
+    <!-- ###################  Servlets ###################  -->
 
+    <!-- ###################  Servlet Mappings ###################  -->
     <servlet-mapping>
         <servlet-name>BaseServlet</servlet-name>
-        <url-pattern>/as/*</url-pattern>
+        <url-pattern>/as/authorization.oauth2</url-pattern>
     </servlet-mapping>
+    <!-- ###################  Servlet Mappings ###################  -->
 
 </web-app>
