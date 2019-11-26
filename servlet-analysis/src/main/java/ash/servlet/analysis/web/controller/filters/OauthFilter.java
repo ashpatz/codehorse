@@ -37,8 +37,6 @@ public class OauthFilter implements Filter {
             chain.doFilter(request, wrapper);
             if(isSso(wrapper)) {
                 log.debug("SSO started");
-            } else {
-                log.debug("Non SSO Auth request ended"); //TODO is this correct?
             }
             writerOriginal.write(wrapper.toString());
         } else {
