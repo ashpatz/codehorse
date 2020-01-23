@@ -1,16 +1,20 @@
 package ash.servlet.analysis.web.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 public class BaseServlet extends HttpServlet {
 
     private String message;
+    private static final Logger log
+            = LoggerFactory.getLogger(BaseServlet.class);
 
     @Override
     public void init() throws ServletException {
@@ -48,5 +52,12 @@ public class BaseServlet extends HttpServlet {
         out.println("</html>");
         response.addHeader("TEMP_HEADER", "TEMP_HEADER_VAL");
         response.setStatus(HttpServletResponse.SC_OK);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //super.doPost(request, response); does not work, forwards to default doPost handler which throws 405
+        log.info("Received code {}", request.getParameter("code"));
+        response.setStatus(HttpServletResponse.SC_ACCEPTED);
     }
 }
