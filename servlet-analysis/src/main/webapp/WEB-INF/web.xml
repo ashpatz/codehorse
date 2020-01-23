@@ -8,6 +8,11 @@
 
     <!-- ###################  Filters ###################  -->
     <filter>
+        <filter-name>CorrelationIdFilter</filter-name>
+        <filter-class>ash.servlet.analysis.web.controller.filters.CorrelationIdFilter</filter-class>
+    </filter>
+
+    <filter>
         <filter-name>CookieFilter</filter-name>
         <filter-class>ash.servlet.analysis.web.controller.filters.CookieFilter</filter-class>
     </filter>
@@ -30,6 +35,11 @@
 
     <!-- ###################  Filters Mappings ###################  -->
     <filter-mapping>
+        <filter-name>CorrelationIdFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
         <filter-name>CookieFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
@@ -49,6 +59,10 @@
         <url-pattern>/sp/ACS.saml2</url-pattern>
     </filter-mapping>
     <!-- ###################  Filters Mappings ###################  -->
+
+    <listener>
+        <listener-class>ash.servlet.analysis.web.controller.listener.RequestCleanupFilter</listener-class>
+    </listener>
 
     <!-- ###################  Servlets ###################  -->
     <servlet>

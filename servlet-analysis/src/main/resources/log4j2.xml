@@ -9,7 +9,7 @@
         <RollingFile name="FILE" fileName="servlet_analysis.log" filePattern="servlet_analysis.log.%i" ignoreExceptions="false">
             <PatternLayout>
                 <charset>UTF-8</charset>
-                <pattern>{"time": "%d",  "index":"someindex",  "tid": "%X{trackingid}", "level": "%-5p", "eventType": "someEventType", "class":"%c", "message": "%enc{%m}", "correlationId": "%X{CorrelationId}", "processId": "%X{processId}"}%n</pattern>
+                <pattern>{"time": "%d",  "index":"someindex",  "tid": "%X{trackingid}", "level": "%-5p", "eventType": "someEventType", "class":"%c", "message": "%enc{%m}", "correlationId": "%X{correlationId}", "processId": "%X{processId}"}%n</pattern>
             </PatternLayout>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10000 KB" />
@@ -20,7 +20,7 @@
         <RollingFile name="SSO" fileName="servlet_analysis.log" filePattern="servlet_analysis.log.%i" ignoreExceptions="false">
             <PatternLayout>
                 <charset>UTF-8</charset>
-                <pattern>{"time": "%d",  "isSSO":"true",  "index":"someindex",  "tid": "%X{trackingid}", "level": "%-5p", "eventType": "someEventType", "class":"%c", "message": "%enc{%m}", "correlationId": "%X{CorrelationId}", "processId": "%X{processId}"}%n</pattern>
+                <pattern>{"time": "%d",  "isSSO":"true",  "index":"someindex",  "tid": "%X{trackingid}", "level": "%-5p", "eventType": "someEventType", "class":"%c", "message": "%enc{%m}", "correlationId": "%X{correlationId}", "processId": "%X{processId}"}%n</pattern>
             </PatternLayout>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10000 KB" />
@@ -42,8 +42,8 @@
 
         <!-- Make all loggers async and use FILE Appender-->
         <AsyncRoot level="INFO" includeLocation="false">
-            <AppenderRef ref="FILE" />
-            <!--<AppenderRef ref="CONSOLE" />-->
+            <!--<AppenderRef ref="FILE" />-->
+            <AppenderRef ref="CONSOLE" />
         </AsyncRoot>
 
     </Loggers>
