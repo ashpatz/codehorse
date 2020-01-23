@@ -27,20 +27,28 @@ public class CorrelationIdFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        String correlationId = null;
-        if(request instanceof HttpServletRequest) {
-            final HttpSession session = ((HttpServletRequest) request).getSession(true);
-            correlationId = ObjectUtils.defaultIfNull(session.getAttribute(CORRELATION_ID), "").toString();
-            if(StringUtils.isBlank(correlationId)) {
-                correlationId = UUID.randomUUID().toString();
-                session.setAttribute(CORRELATION_ID, correlationId);
-            }
-            MDC.put("correlationId", correlationId);
+
+        if (!(request instanceof HttpServletRequest) || !(response instanceof HttpServletResponse)) {
+            chain.doFilter(request, response);
+            return;
         }
+        final HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        final HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
+        final HttpSession session = httpServletRequest.getSession(true);
+        String correlationId = ObjectUtils.defaultIfNull(session.getAttribute(CORRELATION_ID), "").toString();
+        if (StringUtils.isBlank(correlationId)) {
+            correlationId = UUID.randomUUID().toString();
+            session.setAttribute(CORRELATION_ID, correlationId);
+        }
+        MDC.put("correlationId", correlationId);
         chain.doFilter(request, response);
-        if(response instanceof HttpServletResponse && StringUtils.isNotBlank(correlationId)) {
-            ((HttpServletResponse)response).addHeader(CORRELATION_ID, correlationId);
+        if (StringUtils.isNotBlank(correlationId)) {
+            httpServletResponse.addHeader(CORRELATION_ID, correlationId);
         }
+
+        final String tempHeaderVal = httpServletResponse.getHeader("TEMP_HEADER");
+        log.info(" Received temp header {}", tempHeaderVal);
     }
 
     @Override
