@@ -61,7 +61,7 @@
     <!-- ###################  Filters Mappings ###################  -->
 
     <listener>
-        <listener-class>ash.servlet.analysis.web.controller.listener.RequestCleanupFilter</listener-class>
+        <listener-class>ash.servlet.analysis.web.controller.listener.RequestCleanupListener</listener-class>
     </listener>
 
     <!-- ###################  Servlets ###################  -->
