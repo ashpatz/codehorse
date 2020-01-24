@@ -1,10 +1,12 @@
 package ash.servlet.analysis.web.controller.filters;
 
+import ash.servlet.analysis.web.controller.models.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
@@ -30,17 +32,24 @@ public class MyFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
         log.trace("Entering doFilter");
 
-        if (request instanceof HttpServletRequest) {
-            log.debug("Received HttpServletRequest");
-            String requestURI = ((HttpServletRequest)request).getRequestURI();
-            String queryString = ((HttpServletRequest)request).getQueryString();
-
-            request.setAttribute("requestURI", requestURI);
-            request.setAttribute("queryString", queryString);
+        if (!(request instanceof HttpServletRequest) || !(response instanceof HttpServletResponse)) {
+            chain.doFilter(request, response);
+            return;
         }
+
+        log.debug("Received HttpServletRequest");
+        final HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+
+        final String customParam = httpServletRequest.getParameter(Constants.CUSTOM_PARAM);
+        log.debug("Received req param {} :{}", Constants.CUSTOM_PARAM, customParam);
+
+        String requestURI = httpServletRequest.getRequestURI();
+        String queryString = httpServletRequest.getQueryString();
+
+        request.setAttribute("requestURI", requestURI);
+        request.setAttribute("queryString", queryString);
 
         if (!isRequired(request)) {
             log.debug("Filter not applied");

@@ -1,5 +1,6 @@
 package ash.servlet.analysis.web.controller;
 
+import ash.servlet.analysis.web.controller.models.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,11 @@ public class BaseServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        final String customParam = request.getParameter(Constants.CUSTOM_PARAM);
+        log.debug("Received req param {} :{}", Constants.CUSTOM_PARAM, customParam);
+
+
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 //        out.println("<h1> filterApplied: " + request.getAttribute("filterApplied") + "</h1>");
