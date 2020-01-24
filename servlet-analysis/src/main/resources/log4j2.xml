@@ -9,7 +9,7 @@
         <RollingFile name="FILE" fileName="servlet_analysis.log" filePattern="servlet_analysis.log.%i" ignoreExceptions="false">
             <PatternLayout>
                 <charset>UTF-8</charset>
-                <pattern>{"time": "%d", "level": "%-5p", "class":"%c", "message": "%enc{%m}", "correlationId": "%X{correlationId}"}%n</pattern>
+                <pattern>{"time": "%d{ISO8601_OFFSET_DATE_TIME_HHMM}", "level": "%level", "class":"%c", "message": "%enc{%m}", "correlationId": "%X{correlationId}"}%n</pattern>
             </PatternLayout>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10000 KB" />
@@ -34,7 +34,7 @@
             <AppenderRef ref="Console"/>
         </Root>-->
 
-        <Logger name="ash.servlet" level="INFO"/>
+        <Logger name="ash.servlet" level="DEBUG"/>
 
         <Logger name="ash.servlet.analysis.web.controller.filters.OauthFilter" level="DEBUG" additivity="false">
             <!--<AppenderRef ref="SSO" />-->
@@ -43,8 +43,8 @@
 
         <!-- Make all loggers async and use FILE Appender-->
         <AsyncRoot level="INFO" includeLocation="false">
-            <!--<AppenderRef ref="FILE" />-->
-            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE" />
+            <!--<AppenderRef ref="CONSOLE" />-->
         </AsyncRoot>
 
     </Loggers>

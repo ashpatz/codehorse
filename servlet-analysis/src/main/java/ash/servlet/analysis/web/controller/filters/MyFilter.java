@@ -34,7 +34,7 @@ public class MyFilter implements Filter {
         log.trace("Entering doFilter");
 
         if (request instanceof HttpServletRequest) {
-            log.info("Received HttpServletRequest");
+            log.debug("Received HttpServletRequest");
             String requestURI = ((HttpServletRequest)request).getRequestURI();
             String queryString = ((HttpServletRequest)request).getQueryString();
 
