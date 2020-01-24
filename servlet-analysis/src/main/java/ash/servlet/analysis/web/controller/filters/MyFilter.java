@@ -32,6 +32,9 @@ public class MyFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        if(request instanceof RequestParamModifyFilter.MyRequestWrapper) {
+            log.info("Custom request!");
+        }
         log.trace("Entering doFilter");
 
         if (!(request instanceof HttpServletRequest) || !(response instanceof HttpServletResponse)) {

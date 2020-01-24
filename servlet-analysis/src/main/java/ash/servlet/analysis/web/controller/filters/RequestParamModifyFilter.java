@@ -32,7 +32,7 @@ public class RequestParamModifyFilter implements Filter {
     }
 
 
-    private static class MyRequestWrapper extends HttpServletRequestWrapper {
+    public static class MyRequestWrapper extends HttpServletRequestWrapper {
 
         public MyRequestWrapper(HttpServletRequest request) {
             super(request);
