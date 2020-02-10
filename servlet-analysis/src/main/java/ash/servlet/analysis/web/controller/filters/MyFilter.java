@@ -1,6 +1,8 @@
 package ash.servlet.analysis.web.controller.filters;
 
 import ash.servlet.analysis.web.controller.models.Constants;
+import ash.servlet.analysis.web.controller.models.RequestType;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,6 +56,11 @@ public class MyFilter implements Filter {
         request.setAttribute("requestURI", requestURI);
         request.setAttribute("queryString", queryString);
 
+        // ****** Check request attribute
+        RequestType requestType = (RequestType)ObjectUtils.defaultIfNull(request.getAttribute("requestType"), RequestType.OTHER);
+        log.debug("Received requestType {}", requestType.getType());
+        // ****** Check request attribute
+
         if (!isRequired(request)) {
             log.debug("Filter not applied");
             chain.doFilter(request, response);
@@ -68,9 +75,9 @@ public class MyFilter implements Filter {
     private boolean isRequired(final ServletRequest request) {
         if (request instanceof HttpServletRequest) {
             String resourcePath = ((HttpServletRequest) request).getRequestURI();
-            if (AUTH_ENDPOINT.matcher(resourcePath).matches()) {
-                return true;
-            }
+//            if (AUTH_ENDPOINT.matcher(resourcePath).matches()) {
+//                return true;
+//            }
 
             if (RESUME_AUTH_ENDPOINT.matcher(resourcePath).matches()) {
                 return true;

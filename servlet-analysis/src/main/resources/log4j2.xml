@@ -43,8 +43,8 @@
 
         <!-- Make all loggers async and use FILE Appender-->
         <AsyncRoot level="INFO" includeLocation="false">
-            <AppenderRef ref="FILE" />
-            <!--<AppenderRef ref="CONSOLE" />-->
+            <!--<AppenderRef ref="FILE" />-->
+            <AppenderRef ref="CONSOLE" />
         </AsyncRoot>
 
     </Loggers>
