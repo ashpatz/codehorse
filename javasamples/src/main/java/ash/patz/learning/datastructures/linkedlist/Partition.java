@@ -1,35 +1,41 @@
+/**
+ * https://www.geeksforgeeks.org/partitioning-a-linked-list-around-a-given-value-and-keeping-the-original-order/
+ * https://leetcode.com/problems/partition-list/
+ */
 package ash.patz.learning.datastructures.linkedlist;
 
-import ash.patz.learning.datastructures.linkedlist.helper.LinkedListNode;
+import ash.patz.learning.datastructures.linkedlist.helper.ListNode;
 import ash.patz.learning.datastructures.linkedlist.helper.Util;
 
 public class Partition {
 
     public static void main(String[] args) {
-
-        LinkedListNode head = new LinkedListNode(3);
-        LinkedListNode current = Util.appendToList(5, head);
-        current = Util.appendToList(8, current);
-        current = Util.appendToList(10, current);
-        current = Util.appendToList(5, current);
-        current = Util.appendToList(2, current);
-        Util.appendToList(1, current);
+        ListNode head = null;
+        head = Util.buildLinkedList(new int[]{3, 5, 8, 10, 5, 2, 1});
         Util.printLinkedList(head);
         Util.printLinkedList(arrange(head, 5));
+
+        head = Util.buildLinkedList(new int[]{1});
+        Util.printLinkedList(arrange(head, 0));
     }
 
 
-    private static LinkedListNode arrange(LinkedListNode head, int x) {
-        LinkedListNode beforeListStart = null;
-        LinkedListNode beforeListCurrent = null;
-        LinkedListNode afterListStart = null;
-        LinkedListNode afterListCurrent = null;
+    private static ListNode arrange(ListNode head, int x) {
 
-        while(head != null) {
+        if(head == null) {
+            return head;
+        }
 
-            if(head.getValue() < x) {
+        ListNode beforeListStart = null;
+        ListNode beforeListCurrent = null;
+        ListNode afterListStart = null;
+        ListNode afterListCurrent = null;
 
-                if(beforeListStart == null) {
+        while (head != null) {
+
+            if (head.val < x) {
+
+                if (beforeListStart == null) {
                     beforeListStart = head;
                     beforeListCurrent = head;
                 } else {
@@ -38,7 +44,7 @@ public class Partition {
                 }
 
             } else {
-                if(afterListStart == null) {
+                if (afterListStart == null) {
                     afterListStart = head;
                     afterListCurrent = head;
                 } else {
@@ -50,8 +56,15 @@ public class Partition {
             head = head.next;
         }
 
-        afterListCurrent.next = null;
-        beforeListCurrent.next = afterListStart;
-        return beforeListStart;
+        if(afterListCurrent != null && beforeListCurrent != null) {
+            afterListCurrent.next = null;
+            beforeListCurrent.next = afterListStart;
+            return beforeListStart;
+        } else if(afterListCurrent != null) {
+            return afterListStart;
+        } else { //(beforeListCurrent != null) && (afterListCurrent == null)
+            return beforeListStart;
+        }
+
     }
 }
