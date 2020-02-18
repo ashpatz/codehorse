@@ -1,7 +1,6 @@
 /**
  * https://leetcode.com/problems/add-two-numbers/
  * https://www.geeksforgeeks.org/add-two-numbers-represented-by-linked-lists/
- * variation - https://www.geeksforgeeks.org/sum-of-two-linked-lists/
  */
 package ash.patz.learning.datastructures.linkedlist;
 
@@ -43,7 +42,47 @@ public class SumTwo {
         return addTwoNumbers(l1, l2, 0, head, current);
     }
 
-    private static ListNode addTwoNumbers(ListNode l1, ListNode l2, int carry, ListNode head, ListNode current) {
+    /**
+     * Compute first, then traverse
+     * 1. compute current result
+     * 2. Attach current result to previous
+     * 3. return head
+     * Runtime: O(l1 + l2)
+     */
+    private static ListNode addTwoNumbers(ListNode l1, ListNode l2, int carry, ListNode head, ListNode previous) {
+        int sum = carry;
+        ListNode l1Next = null;
+        ListNode l2Next = null;
+
+        if(l1 == null && l2 == null && carry == 0) {
+            return head;
+        }
+
+        if(l1 != null) {
+            sum += l1.val;
+            l1Next = l1.next;
+        }
+
+        if(l2 != null) {
+            sum += l2.val;
+            l2Next = l2.next;
+        }
+
+        ListNode current = new ListNode(sum % 10);
+        carry = sum > 9 ? 1 : 0;
+
+        if(head == null) {
+            head = current;
+            previous = current;
+        } else {
+            previous.next = current;
+            previous = previous.next;
+        }
+        addTwoNumbers(l1Next, l2Next, carry, head, previous);
+        return head;
+    }
+
+    private static ListNode addTwoNumbers1(ListNode l1, ListNode l2, int carry, ListNode head, ListNode current) {
         int sum = carry;
 
         if (l1 == null && l2 == null && carry == 0) {
