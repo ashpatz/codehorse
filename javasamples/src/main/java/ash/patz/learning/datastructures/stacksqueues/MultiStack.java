@@ -1,5 +1,8 @@
 package ash.patz.learning.datastructures.stacksqueues;
 
+/**
+ * Fixed capacity stacks
+ */
 public class MultiStack {
 
     private int noOfStacks;
@@ -32,7 +35,7 @@ public class MultiStack {
         int stackIndex = (stackNumber - 1);
         int destinationIndex = getTopIndex(stackNumber);
         int value = holder[destinationIndex];
-        holder[destinationIndex] = 0;
+        holder[destinationIndex] = -1;
         stackSizes[stackIndex]--;
         return value;
     }
