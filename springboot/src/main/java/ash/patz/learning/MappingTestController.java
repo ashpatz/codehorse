@@ -1,11 +1,10 @@
 package ash.patz.learning;
 
+import ash.patz.learning.service.RemoteService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 
@@ -14,6 +13,15 @@ import javax.websocket.server.PathParam;
  */
 @RestController
 public class MappingTestController {
+
+    @Autowired
+    private RemoteService service;
+
+    @RequestMapping(value = "/random/delay")
+    public String getRandomDelayedResponse() {
+        return service.invokeRemoteService();
+    }
+
     @RequestMapping(value = "/hello/{there}")
     public String index(@PathParam("there") String myPathParam) {
         System.out.println("Inside /hello/{there}");
