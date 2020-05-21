@@ -56,11 +56,11 @@ public class Partition {
             head = head.next;
         }
 
-        if(afterListCurrent != null && beforeListCurrent != null) {
+        if(afterListCurrent != null && beforeListCurrent != null) { // merge lists
             afterListCurrent.next = null;
             beforeListCurrent.next = afterListStart;
             return beforeListStart;
-        } else if(afterListCurrent != null) {
+        } else if(afterListCurrent != null) { //beforeListCurrent == null, no lesser elements
             return afterListStart;
         } else { //(beforeListCurrent != null) && (afterListCurrent == null)
             return beforeListStart;
