@@ -7,18 +7,16 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>dailystatus</module>
+<!--        <module>dailystatus</module>-->
         <module>javasamples</module>
 <!--        <module>mavenplugins</module>-->
+        <module>redisson</module>
         <module>springboot</module>
         <module>servlet-analysis</module>
     </modules>
 
     <url>http://maven.apache.org</url>
     <properties>
-        <spring.version>4.2.1.RELEASE</spring.version>
-        <spring.boot.dependencies.version>1.5.3.RELEASE</spring.boot.dependencies.version>
-        <springfox-swagger.version>2.6.1</springfox-swagger.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
@@ -34,7 +32,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.10</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
@@ -43,7 +41,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
             <version>${spring.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
